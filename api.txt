@@ -1,0 +1,67 @@
+-------- register a new user ----------------
+1. Register User
+POST /training/auth/register
+
+📦 JSON Payload
+json
+Copy
+Edit
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "password": "12345678",
+  "confirmPassword": "12345678"
+}
+
+
+--------------login user-----------------------
+2. Login User
+POST /training/auth/login
+
+📦 JSON Payload
+json
+Copy
+Edit
+{
+  "email": "john@example.com",
+  "password": "12345678"
+}
+
+
+--------------forgot password--------------------
+3. Forgot Password (Send OTP)
+POST /training/auth/forgot-password
+
+📦 JSON Payload
+json
+Copy
+Edit
+{
+  "email": "john@example.com"
+}
+
+--------------------verify otp---------------------
+4. Verify OTP
+POST /training/auth/verify-otp
+
+📦 JSON Payload
+json
+Copy
+Edit
+{
+  "email": "john@example.com",
+  "otp": "123456"  // Replace with actual OTP from email
+}
+
+-------------------resend otp-----------------------
+5. Resend OTP
+POST /training/auth/resend-otp
+
+📦 JSON Payload
+json
+Copy
+Edit
+{
+  "email": "john@example.com"
+}
