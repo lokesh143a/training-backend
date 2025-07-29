@@ -14,7 +14,7 @@ Edit
   "confirmPassword": "12345678"
 }
 
-
+ 
 --------------login user-----------------------
 2. Login User
 POST /training/auth/login

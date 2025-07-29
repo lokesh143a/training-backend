@@ -5,7 +5,8 @@ const {
   loginUser,
   forgotPassword,
   verifyOtp,
-  resendOtp
+  resendOtp,
+  resetPassword,
 } = require("../controllers/authController");
 
 // creating a user
@@ -18,9 +19,12 @@ router.post("/login", loginUser);
 router.post("/forgot-password", forgotPassword);
 
 // verify otp
-router.post("/verify-otp" , verifyOtp)
+router.post("/verify-otp", verifyOtp);
 
 // resend otp
-router.post("/resend-otp" , resendOtp)
+router.post("/resend-otp", resendOtp);
+
+// reset password
+router.post("/reset-password", resetPassword);
 
 module.exports = router;
