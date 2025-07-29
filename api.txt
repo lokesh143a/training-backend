@@ -1,8 +1,13 @@
--------- register a new user ----------------
-1. Register User
-POST /training/auth/register
+------------------ example url--------------------
+url : example_url/training/auth/register
 
-📦 JSON Payload
+
+---------------------create new user-------------------------
+
+1. Register a New User
+POST /training/auth/register
+📦 Payload:
+
 json
 Copy
 Edit
@@ -13,13 +18,18 @@ Edit
   "password": "12345678",
   "confirmPassword": "12345678"
 }
+📤 Response:
 
- 
---------------login user-----------------------
+201: User registered successfully
+
+400: User already exists / Passwords do not match / All fields are required
+
+
+-----------------------login user-----------------------
 2. Login User
 POST /training/auth/login
+📦 Payload:
 
-📦 JSON Payload
 json
 Copy
 Edit
@@ -27,41 +37,89 @@ Edit
   "email": "john@example.com",
   "password": "12345678"
 }
+📤 Response:
+
+200: { "message": "Login successful", "token": "<jwt>" }
+
+404: User not found
+
+400: Invalid credentials
 
 
---------------forgot password--------------------
+------------------------forget password-------------------------
 3. Forgot Password (Send OTP)
 POST /training/auth/forgot-password
+📦 Payload:
 
-📦 JSON Payload
 json
 Copy
 Edit
 {
   "email": "john@example.com"
 }
+📤 Response:
 
---------------------verify otp---------------------
+200: OTP sent to email
+
+404: User not found
+
+
+-----------------------verify otp----------------------------------
 4. Verify OTP
 POST /training/auth/verify-otp
+📦 Payload:
 
-📦 JSON Payload
 json
 Copy
 Edit
 {
   "email": "john@example.com",
-  "otp": "123456"  // Replace with actual OTP from email
+  "otp": "123456"
 }
+📤 Response:
 
--------------------resend otp-----------------------
+200: OTP verified successfully
+
+400: Invalid or expired OTP
+
+404: OTP not requested or expired
+
+
+--------------------------------resend otp----------------------------
 5. Resend OTP
 POST /training/auth/resend-otp
+📦 Payload:
 
-📦 JSON Payload
 json
 Copy
 Edit
 {
   "email": "john@example.com"
 }
+📤 Response:
+
+200: OTP resent successfully
+
+404: User not found
+
+
+------------------------------reset password---------------------------------
+ 6. Reset Password
+POST /training/auth/reset-password
+📦 Payload:
+
+json
+Copy
+Edit
+{
+  "email": "john@example.com",
+  "newPassword": "newpass123",
+  "confirmPassword": "newpass123"
+}
+📤 Response:
+
+200: Password reset successfully
+
+400: Passwords do not match / All fields are required
+
+404: User not found
