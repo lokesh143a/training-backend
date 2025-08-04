@@ -5,6 +5,7 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes")
+const leagueRoutes = require("./routes/leagueRoutes")
 
 // for env varibales
 dotenv.config();
@@ -20,7 +21,8 @@ connectDB();
 
 
 // API routes 
-app.use("/training/auth" , authRoutes)
+app.use("/training/auth" , authRoutes) //for authentication
+app.use("/training/league" , leagueRoutes) //for league management
 
 // testing
 app.use("/", (req, res) => {

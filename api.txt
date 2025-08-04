@@ -122,4 +122,169 @@ Edit
 
 400: Passwords do not match / All fields are required
 
-404: User not found
+404: User not found 
+
+
+
+--------------------league managemnt--------------------
+--------------------1. Add League-----------------------
+Endpoint: POST /training/league/add-league
+Description: Add a new league.
+
+✅ Request Body:
+json
+Copy
+Edit
+{
+  "name": "Premier League",
+  "country": "England"
+}
+🔄 Response:
+201 Created
+
+json
+Copy
+Edit
+{
+  "message": "League added successfully"
+}
+400 Bad Request
+
+json
+Copy
+Edit
+{
+  "message": "All fields are required"
+}
+500 Server Error
+
+json
+Copy
+Edit
+{
+  "message": "Something went wrong"
+}
+🔹------------------- 2. Get Leagues ---------------------
+Endpoint: GET /training/league/get-league
+Description: Get a paginated list of leagues.
+
+🔍 Query Parameters:
+page (optional, default: 1)
+
+limit (optional, default: 10)
+
+🧾 Example:
+Copy
+Edit
+GET /api/league/get?page=1&limit=10
+🔄 Response:
+200 OK
+
+json
+Copy
+Edit
+{
+  "message": "Leagues fetched successfully",
+  "page": 1,
+  "limit": 10,
+  "total": 100,
+  "totalPages": 10,
+  "data": [ 
+    {
+      "_id": "12345",
+      "name": "Premier League",
+      "country": "England",
+      "createdAt": "...",
+      "updatedAt": "..."
+    }
+  ]
+}
+500 Server Error
+
+json
+Copy
+Edit
+{
+  "message": "Failed to fetch leagues",
+  "error": "Detailed error message"
+}
+--------------------------🔹 3. Edit League-------------------
+Endpoint: PUT /training/league/edit-league
+Description: Update the details of an existing league.
+
+✅ Request Body:
+json
+Copy
+Edit
+{
+  "id": "64f60c83e4a18f0012ce3abc",
+  "name": "La Liga",
+  "country": "Spain"
+}
+🔄 Response:
+200 OK
+
+json
+Copy
+Edit
+{
+  "message": "League updated successfully"
+}
+400 Bad Request
+
+json
+Copy
+Edit
+{
+  "message": "All fields are required"
+}
+json
+Copy
+Edit
+{
+  "message": "League not found"
+}
+500 Server Error
+
+json
+Copy
+Edit
+{
+  "message": "Something went wrong"
+}
+----------------------🔹 4. Delete League----------------
+Endpoint: DELETE /training/league/delete-league
+Description: Delete an existing league.
+
+✅ Request Body:
+json
+Copy
+Edit
+{
+  "id": "64f60c83e4a18f0012ce3abc"
+}
+🔄 Response:
+200 OK
+
+json
+Copy
+Edit
+{
+  "message": "League deleted successfully!"
+}
+400 Bad Request
+
+json
+Copy
+Edit
+{
+  "message": "League not found"
+}
+500 Server Error
+
+json
+Copy
+Edit
+{
+  "message": "Server error while deleting league"
+}
