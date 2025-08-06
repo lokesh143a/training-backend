@@ -67,7 +67,7 @@ const editLeague = async (req, res) => {
 
     await isExisted.save();
 
-    return res.status(200).json({ message: "League updated successfully" });
+    return res.status(200).json({success:true , message: "League updated successfully" });
   } catch (error) {
     console.error("Error updating league:", error);
     return res.status(500).json({ message: "Something went wrong" });
